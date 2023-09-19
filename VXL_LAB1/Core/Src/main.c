@@ -91,16 +91,18 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int sec=0;
+  HAL_GPIO_TogglePin(led_red_GPIO_Port, led_yellow_Pin);
+  //int status = 2;
+  int count = 3;
   while (1)
   {
-	  if (sec==0){
-		  HAL_GPIO_TogglePin(led_red_GPIO_Port, led_red_Pin);
-		  HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
-		  sec++;
-	  } else if (sec<2) sec++;
-	  else sec=0;
-	  HAL_Delay(1000);
+		count = count - 1;
+		if (count<=0){
+			count = 2;
+			HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
+			HAL_GPIO_TogglePin(led_red_GPIO_Port, led_red_Pin);
+		}
+	 HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
