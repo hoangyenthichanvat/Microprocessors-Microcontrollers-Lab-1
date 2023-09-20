@@ -61,6 +61,106 @@ static void MX_GPIO_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
+void display7SEG(int num){
+	if (num==0){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, SET);
+	}
+	else if (num==1){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, SET);
+	}
+
+	else if (num==2){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, RESET);
+	}
+
+	else if (num==3){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, RESET);
+	}
+
+	else if (num==4){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, RESET);
+	}
+
+	else if (num==5){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, RESET);
+	}
+
+	else if (num==6){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, RESET);
+	}
+
+	else if (num==7){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, SET);
+	}
+	else if (num==8){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, RESET);
+	}
+
+	else if (num==9){
+		HAL_GPIO_WritePin(GPIOB, pot0_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot1_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot2_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot3_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot4_Pin, SET);
+		HAL_GPIO_WritePin(GPIOB, pot5_Pin, RESET);
+		HAL_GPIO_WritePin(GPIOB, pot6_Pin, RESET);
+	}
+
+}
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -91,16 +191,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int sec=0;
+  int counter = 0;
   while (1)
   {
-	  if (sec==0){
-		  HAL_GPIO_TogglePin(led_red_GPIO_Port, led_red_Pin);
-		  HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
-		  sec++;
-	  } else if (sec<2) sec++;
-	  else sec=0;
-	  HAL_Delay(1000);
+	  if( counter >= 10) counter = 0;
+	  display7SEG ( counter ) ;
+	  counter++;
+	  HAL_Delay (1000) ;
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
