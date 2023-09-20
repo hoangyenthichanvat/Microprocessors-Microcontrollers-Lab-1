@@ -91,16 +91,31 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_GPIO_TogglePin(led_red_GPIO_Port, led_yellow_Pin);
-  //int status = 2;
-  int count = 3;
+  HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
+  HAL_GPIO_TogglePin(led_green_GPIO_Port, led_green_Pin);
+
+  int count = 6;
+  int status = 0;
   while (1)
   {
 		count = count - 1;
-		if (count<=0){
+		if (count<=0 && status==0){
+			status=1;
 			count = 2;
 			HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
 			HAL_GPIO_TogglePin(led_red_GPIO_Port, led_red_Pin);
+		}
+		if (count<=0 && status==1){
+			status=2;
+			count = 3;
+			HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
+			HAL_GPIO_TogglePin(led_green_GPIO_Port, led_green_Pin);
+		}
+		if (count<=0 && status==2){
+			status=0;
+			count = 5;
+			HAL_GPIO_TogglePin(led_red_GPIO_Port, led_red_Pin);
+			HAL_GPIO_TogglePin(led_green_GPIO_Port, led_green_Pin);
 		}
 	 HAL_Delay(1000);
     /* USER CODE END WHILE */
@@ -161,10 +176,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, led_red_Pin|led_yellow_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, led_red_Pin|led_yellow_Pin|led_green_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : led_red_Pin led_yellow_Pin */
-  GPIO_InitStruct.Pin = led_red_Pin|led_yellow_Pin;
+  /*Configure GPIO pins : led_red_Pin led_yellow_Pin led_green_Pin */
+  GPIO_InitStruct.Pin = led_red_Pin|led_yellow_Pin|led_green_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
