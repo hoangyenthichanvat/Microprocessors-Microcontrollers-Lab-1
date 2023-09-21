@@ -191,6 +191,21 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(led_red2_GPIO_Port, led_red_Pin, SET);
+  HAL_GPIO_WritePin(led_yellow_GPIO_Port, led_yellow_Pin, SET);
+  HAL_GPIO_WritePin(led_green_GPIO_Port, led_green_Pin, SET);
+
+  HAL_GPIO_WritePin(led_red2_GPIO_Port, led_red2_Pin, SET);
+  HAL_GPIO_WritePin(led_yellow2_GPIO_Port, led_yellow2_Pin, SET);
+  HAL_GPIO_WritePin(led_green2_GPIO_Port, led_green2_Pin, SET);
+
+
+
+  HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
+  HAL_GPIO_TogglePin(led_green_GPIO_Port, led_green_Pin);
+
+  HAL_GPIO_TogglePin(led_yellow2_GPIO_Port, led_yellow2_Pin);
+  HAL_GPIO_TogglePin(led_red2_GPIO_Port, led_red2_Pin);
   int count = 4;
   int status =0;
   while (1)
