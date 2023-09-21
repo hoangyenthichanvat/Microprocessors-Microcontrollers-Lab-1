@@ -91,56 +91,88 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_GPIO_WritePin(led_red2_GPIO_Port, led_red_Pin, SET);
-  HAL_GPIO_WritePin(led_yellow_GPIO_Port, led_yellow_Pin, SET);
-  HAL_GPIO_WritePin(led_green_GPIO_Port, led_green_Pin, SET);
+  HAL_GPIO_WritePin(hour0_GPIO_Port, hour0_Pin, SET);
+  HAL_GPIO_WritePin(hour1_GPIO_Port, hour1_Pin, SET);
+  HAL_GPIO_WritePin(hour2_GPIO_Port, hour2_Pin, SET);
+  HAL_GPIO_WritePin(hour3_GPIO_Port, hour3_Pin, SET);
+  HAL_GPIO_WritePin(hour4_GPIO_Port, hour4_Pin, SET);
+  HAL_GPIO_WritePin(hour5_GPIO_Port, hour5_Pin, SET);
 
-  HAL_GPIO_WritePin(led_red2_GPIO_Port, led_red2_Pin, SET);
-  HAL_GPIO_WritePin(led_yellow2_GPIO_Port, led_yellow2_Pin, SET);
-  HAL_GPIO_WritePin(led_green2_GPIO_Port, led_green2_Pin, SET);
+  HAL_GPIO_WritePin(hour6_GPIO_Port, hour6_Pin, SET);
+  HAL_GPIO_WritePin(hour7_GPIO_Port, hour7_Pin, SET);
+  HAL_GPIO_WritePin(hour8_GPIO_Port, hour8_Pin, SET);
+  HAL_GPIO_WritePin(hour9_GPIO_Port, hour9_Pin, SET);
+  HAL_GPIO_WritePin(hour10_GPIO_Port, hour10_Pin, SET);
+  HAL_GPIO_WritePin(hour11_GPIO_Port, hour11_Pin, SET);
 
+  HAL_GPIO_TogglePin(hour0_GPIO_Port, hour0_Pin);
+  HAL_GPIO_TogglePin(hour1_GPIO_Port, hour1_Pin);
+  HAL_GPIO_TogglePin(hour2_GPIO_Port, hour2_Pin);
+  HAL_GPIO_TogglePin(hour3_GPIO_Port, hour3_Pin);
+  HAL_GPIO_TogglePin(hour4_GPIO_Port, hour4_Pin);
+  HAL_GPIO_TogglePin(hour5_GPIO_Port, hour5_Pin);
+  HAL_GPIO_TogglePin(hour6_GPIO_Port, hour6_Pin);
+  HAL_GPIO_TogglePin(hour7_GPIO_Port, hour7_Pin);
+  HAL_GPIO_TogglePin(hour8_GPIO_Port, hour8_Pin);
+  HAL_GPIO_TogglePin(hour9_GPIO_Port, hour9_Pin);
+  HAL_GPIO_TogglePin(hour10_GPIO_Port, hour10_Pin);
+  HAL_GPIO_TogglePin(hour11_GPIO_Port, hour11_Pin);
 
-
-  HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
-  HAL_GPIO_TogglePin(led_green_GPIO_Port, led_green_Pin);
-
-  HAL_GPIO_TogglePin(led_yellow2_GPIO_Port, led_yellow2_Pin);
-  HAL_GPIO_TogglePin(led_red2_GPIO_Port, led_red2_Pin);
-  int count = 4;
+  int count = 0;
   int status = 0;
   while (1)
   {
-		count = count - 1;
-		if (count<=0 && status==0){
-			status=1;
-			count = 2;
-			HAL_GPIO_TogglePin(led_yellow2_GPIO_Port, led_yellow2_Pin);
-			HAL_GPIO_TogglePin(led_green2_GPIO_Port, led_green2_Pin);
-		}
-		if (count<=0 && status==1){
-			status=2;
-			count = 3;
-			HAL_GPIO_TogglePin(led_red_GPIO_Port, led_red_Pin);
-			HAL_GPIO_TogglePin(led_green_GPIO_Port, led_green_Pin);
-
-			HAL_GPIO_TogglePin(led_yellow2_GPIO_Port, led_yellow2_Pin);
-			HAL_GPIO_TogglePin(led_red2_GPIO_Port, led_red2_Pin);
-		}
-		if (count<=0 && status==2){
-			status=3;
-			count = 2;
-			HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
-			HAL_GPIO_TogglePin(led_green_GPIO_Port, led_green_Pin);
-		}
-		if (count<=0 && status==3){
-			status=0;
-			count = 3;
-			HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
-			HAL_GPIO_TogglePin(led_red_GPIO_Port, led_red_Pin);
-
-			HAL_GPIO_TogglePin(led_green2_GPIO_Port, led_green2_Pin);
-			HAL_GPIO_TogglePin(led_red2_GPIO_Port, led_red2_Pin);
-		}
+	  if (count == 0)   HAL_GPIO_TogglePin(hour0_GPIO_Port, hour0_Pin);
+	  if (count == 1){
+		  HAL_GPIO_TogglePin(hour0_GPIO_Port, hour0_Pin);
+		  HAL_GPIO_TogglePin(hour1_GPIO_Port, hour1_Pin);
+	  }
+	  if (count == 2){
+		  HAL_GPIO_TogglePin(hour2_GPIO_Port, hour2_Pin);
+		  HAL_GPIO_TogglePin(hour1_GPIO_Port, hour1_Pin);
+	  }
+	  if (count == 3){
+		  HAL_GPIO_TogglePin(hour3_GPIO_Port, hour3_Pin);
+		  HAL_GPIO_TogglePin(hour2_GPIO_Port, hour2_Pin);
+	  }
+	  if (count == 4){
+		  HAL_GPIO_TogglePin(hour4_GPIO_Port, hour4_Pin);
+		  HAL_GPIO_TogglePin(hour3_GPIO_Port, hour3_Pin);
+	  }
+	  if (count == 5){
+		  HAL_GPIO_TogglePin(hour4_GPIO_Port, hour4_Pin);
+		  HAL_GPIO_TogglePin(hour5_GPIO_Port, hour5_Pin);
+	  }
+	  if (count == 6){
+		  HAL_GPIO_TogglePin(hour6_GPIO_Port, hour6_Pin);
+		  HAL_GPIO_TogglePin(hour5_GPIO_Port, hour5_Pin);
+	  }
+	  if (count == 7){
+		  HAL_GPIO_TogglePin(hour7_GPIO_Port, hour7_Pin);
+		  HAL_GPIO_TogglePin(hour6_GPIO_Port, hour6_Pin);
+	  }
+	  if (count == 8){
+		  HAL_GPIO_TogglePin(hour7_GPIO_Port, hour7_Pin);
+		  HAL_GPIO_TogglePin(hour8_GPIO_Port, hour8_Pin);
+	  }
+	  if (count == 9){
+		  HAL_GPIO_TogglePin(hour9_GPIO_Port, hour9_Pin);
+		  HAL_GPIO_TogglePin(hour8_GPIO_Port, hour8_Pin);
+	  }
+	  if (count == 10){
+		  HAL_GPIO_TogglePin(hour10_GPIO_Port, hour10_Pin);
+		  HAL_GPIO_TogglePin(hour9_GPIO_Port, hour9_Pin);
+	  }
+	  if (count == 11){
+		  HAL_GPIO_TogglePin(hour10_GPIO_Port, hour10_Pin);
+		  HAL_GPIO_TogglePin(hour11_GPIO_Port, hour11_Pin);
+	  }
+	  if (count == 12){
+		  HAL_GPIO_TogglePin(hour0_GPIO_Port, hour0_Pin);
+		  HAL_GPIO_TogglePin(hour11_GPIO_Port, hour11_Pin);
+		  count = 0;
+	  }
+	  count++;
 	 HAL_Delay(1000);
     /* USER CODE END WHILE */
 
@@ -198,19 +230,36 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, led_red_Pin|led_yellow_Pin|led_green_Pin|led_red2_Pin
-                          |led_yellow2_Pin|led_green2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, hour0_Pin|hour1_Pin|hour2_Pin|hour3_Pin
+                          |hour4_Pin|hour5_Pin|hour6_Pin|hour7_Pin
+                          |hour8_Pin|hour9_Pin|hour10_Pin|hour11_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : led_red_Pin led_yellow_Pin led_green_Pin led_red2_Pin
-                           led_yellow2_Pin led_green2_Pin */
-  GPIO_InitStruct.Pin = led_red_Pin|led_yellow_Pin|led_green_Pin|led_red2_Pin
-                          |led_yellow2_Pin|led_green2_Pin;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, pot0_Pin|pot1_Pin|pot2_Pin|pot3_Pin
+                          |pot4_Pin|pot5_Pin|pot6_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : hour0_Pin hour1_Pin hour2_Pin hour3_Pin
+                           hour4_Pin hour5_Pin hour6_Pin hour7_Pin
+                           hour8_Pin hour9_Pin hour10_Pin hour11_Pin */
+  GPIO_InitStruct.Pin = hour0_Pin|hour1_Pin|hour2_Pin|hour3_Pin
+                          |hour4_Pin|hour5_Pin|hour6_Pin|hour7_Pin
+                          |hour8_Pin|hour9_Pin|hour10_Pin|hour11_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : pot0_Pin pot1_Pin pot2_Pin pot3_Pin
+                           pot4_Pin pot5_Pin pot6_Pin */
+  GPIO_InitStruct.Pin = pot0_Pin|pot1_Pin|pot2_Pin|pot3_Pin
+                          |pot4_Pin|pot5_Pin|pot6_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
