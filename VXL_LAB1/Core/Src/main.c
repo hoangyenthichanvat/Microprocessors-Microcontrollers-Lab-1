@@ -72,7 +72,7 @@ void clearNumberOnClock(int num)
 {
 	HAL_GPIO_WritePin(GPIOA, 1 << (num + 1), RESET);
 }
-void setNumberOnClock(int num)
+void setNumberOnclock(int num)
 {
 	HAL_GPIO_WritePin(GPIOA, 1 << (num + 1), SET);
 }
@@ -133,24 +133,37 @@ int main(void)
   HAL_GPIO_TogglePin(hour10_GPIO_Port, hour10_Pin);
   HAL_GPIO_TogglePin(hour11_GPIO_Port, hour11_Pin);
 
-  int count = 0;
-
-  while (1)
-  {
-	  if (count == 0) {
-		  HAL_GPIO_TogglePin(hour0_GPIO_Port, hour0_Pin);
-		    HAL_GPIO_TogglePin(hour1_GPIO_Port, hour1_Pin);
-		    HAL_GPIO_TogglePin(hour2_GPIO_Port, hour2_Pin);
-		    HAL_GPIO_TogglePin(hour3_GPIO_Port, hour3_Pin);
-		    HAL_GPIO_TogglePin(hour4_GPIO_Port, hour4_Pin);
-		    HAL_GPIO_TogglePin(hour5_GPIO_Port, hour5_Pin);
-	  }
-	  else {
-		  count = -1;
-		  clearNumberOnClock(2);
-	  }
-	  count++;
-	 HAL_Delay(1000);
+  int hour = 0, min =4, sec = 38;
+while (1)
+{
+	 if(sec ==0)
+	 {
+		clearALLClock();
+	 }
+	 else
+		 clearNumberOnClock((sec-1)/5);
+	 if(min == 0)
+	 {
+		 clearALLClock();
+	 }
+	 else clearNumberOnClock((min-1)/5);
+	 clearNumberOnClock(hour - 1);
+	 setNumberOnclock(sec/5);
+	 setNumberOnclock(min/5);
+	 setNumberOnclock(hour);
+	 sec++;
+	 if(sec >= 60)
+	 {
+		 sec = 0 ;
+		 min++;
+	 }
+	 if( min >= 60)
+	 {
+		 min = 0;
+		 hour++;
+	 }
+	 hour = hour%12;
+	 HAL_Delay(200);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
