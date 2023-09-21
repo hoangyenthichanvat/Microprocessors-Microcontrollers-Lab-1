@@ -72,6 +72,10 @@ void clearNumberOnClock(int num)
 {
 	HAL_GPIO_WritePin(GPIOA, 1 << (num + 1), RESET);
 }
+void setNumberOnClock(int num)
+{
+	HAL_GPIO_WritePin(GPIOA, 1 << (num + 1), SET);
+}
 int main(void)
 {
   /* USER CODE BEGIN 1 */
