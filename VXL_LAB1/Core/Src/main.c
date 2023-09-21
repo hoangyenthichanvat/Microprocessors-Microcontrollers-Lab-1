@@ -191,14 +191,46 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int counter = 0;
+  int count = 4;
+  int status =0;
   while (1)
   {
-	  if( counter >= 10) counter = 0;
-	  display7SEG ( counter ) ;
-	  counter++;
-	  HAL_Delay (1000) ;
+		count = count - 1;
+		if (count<=0 && status==0){
+			status=1;
+			count = 2;
+			HAL_GPIO_TogglePin(led_yellow2_GPIO_Port, led_yellow2_Pin);
+			HAL_GPIO_TogglePin(led_green2_GPIO_Port, led_green2_Pin);
+		}
+		if (count<=0 && status==1){
+			status=2;
+			count = 3;
+			HAL_GPIO_TogglePin(led_red_GPIO_Port, led_red_Pin);
+			HAL_GPIO_TogglePin(led_green_GPIO_Port, led_green_Pin);
 
+			HAL_GPIO_TogglePin(led_yellow2_GPIO_Port, led_yellow2_Pin);
+			HAL_GPIO_TogglePin(led_red2_GPIO_Port, led_red2_Pin);
+		}
+		if (count<=0 && status==2){
+			status=3;
+			count = 2;
+			HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
+			HAL_GPIO_TogglePin(led_green_GPIO_Port, led_green_Pin);
+		}
+		if (count<=0 && status==3){
+			status=0;
+			count = 3;
+			HAL_GPIO_TogglePin(led_yellow_GPIO_Port, led_yellow_Pin);
+			HAL_GPIO_TogglePin(led_red_GPIO_Port, led_red_Pin);
+
+			HAL_GPIO_TogglePin(led_green2_GPIO_Port, led_green2_Pin);
+			HAL_GPIO_TogglePin(led_red2_GPIO_Port, led_red2_Pin);
+		}
+		if (status == 0) display7SEG(count+2);
+		if (status == 1) display7SEG(count);
+		if (status == 2) display7SEG(count);
+		if (status == 3) display7SEG(count);
+	 HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
