@@ -61,6 +61,35 @@ static void MX_GPIO_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
+void clearALLClock (){
+	  HAL_GPIO_WritePin(hour0_GPIO_Port, hour0_Pin, SET);
+	  HAL_GPIO_WritePin(hour1_GPIO_Port, hour1_Pin, SET);
+	  HAL_GPIO_WritePin(hour2_GPIO_Port, hour2_Pin, SET);
+	  HAL_GPIO_WritePin(hour3_GPIO_Port, hour3_Pin, SET);
+	  HAL_GPIO_WritePin(hour4_GPIO_Port, hour4_Pin, SET);
+	  HAL_GPIO_WritePin(hour5_GPIO_Port, hour5_Pin, SET);
+
+	  HAL_GPIO_WritePin(hour6_GPIO_Port, hour6_Pin, SET);
+	  HAL_GPIO_WritePin(hour7_GPIO_Port, hour7_Pin, SET);
+	  HAL_GPIO_WritePin(hour8_GPIO_Port, hour8_Pin, SET);
+	  HAL_GPIO_WritePin(hour9_GPIO_Port, hour9_Pin, SET);
+	  HAL_GPIO_WritePin(hour10_GPIO_Port, hour10_Pin, SET);
+	  HAL_GPIO_WritePin(hour11_GPIO_Port, hour11_Pin, SET);
+
+	  HAL_GPIO_WritePin(hour0_GPIO_Port, hour0_Pin, RESET);
+	  HAL_GPIO_WritePin(hour1_GPIO_Port, hour1_Pin, RESET);
+	  HAL_GPIO_WritePin(hour2_GPIO_Port, hour2_Pin, RESET);
+	  HAL_GPIO_WritePin(hour3_GPIO_Port, hour3_Pin, RESET);
+	  HAL_GPIO_WritePin(hour4_GPIO_Port, hour4_Pin, RESET);
+	  HAL_GPIO_WritePin(hour5_GPIO_Port, hour5_Pin, RESET);
+
+	  HAL_GPIO_WritePin(hour6_GPIO_Port, hour6_Pin, RESET);
+	  HAL_GPIO_WritePin(hour7_GPIO_Port, hour7_Pin, RESET);
+	  HAL_GPIO_WritePin(hour8_GPIO_Port, hour8_Pin, RESET);
+	  HAL_GPIO_WritePin(hour9_GPIO_Port, hour9_Pin, RESET);
+	  HAL_GPIO_WritePin(hour10_GPIO_Port, hour10_Pin, RESET);
+	  HAL_GPIO_WritePin(hour11_GPIO_Port, hour11_Pin, RESET);
+}
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -119,58 +148,20 @@ int main(void)
   HAL_GPIO_TogglePin(hour11_GPIO_Port, hour11_Pin);
 
   int count = 0;
-  int status = 0;
+
   while (1)
   {
-	  if (count == 0)   HAL_GPIO_TogglePin(hour0_GPIO_Port, hour0_Pin);
-	  if (count == 1){
+	  if (count == 0) {
 		  HAL_GPIO_TogglePin(hour0_GPIO_Port, hour0_Pin);
-		  HAL_GPIO_TogglePin(hour1_GPIO_Port, hour1_Pin);
+		    HAL_GPIO_TogglePin(hour1_GPIO_Port, hour1_Pin);
+		    HAL_GPIO_TogglePin(hour2_GPIO_Port, hour2_Pin);
+		    HAL_GPIO_TogglePin(hour3_GPIO_Port, hour3_Pin);
+		    HAL_GPIO_TogglePin(hour4_GPIO_Port, hour4_Pin);
+		    HAL_GPIO_TogglePin(hour5_GPIO_Port, hour5_Pin);
 	  }
-	  if (count == 2){
-		  HAL_GPIO_TogglePin(hour2_GPIO_Port, hour2_Pin);
-		  HAL_GPIO_TogglePin(hour1_GPIO_Port, hour1_Pin);
-	  }
-	  if (count == 3){
-		  HAL_GPIO_TogglePin(hour3_GPIO_Port, hour3_Pin);
-		  HAL_GPIO_TogglePin(hour2_GPIO_Port, hour2_Pin);
-	  }
-	  if (count == 4){
-		  HAL_GPIO_TogglePin(hour4_GPIO_Port, hour4_Pin);
-		  HAL_GPIO_TogglePin(hour3_GPIO_Port, hour3_Pin);
-	  }
-	  if (count == 5){
-		  HAL_GPIO_TogglePin(hour4_GPIO_Port, hour4_Pin);
-		  HAL_GPIO_TogglePin(hour5_GPIO_Port, hour5_Pin);
-	  }
-	  if (count == 6){
-		  HAL_GPIO_TogglePin(hour6_GPIO_Port, hour6_Pin);
-		  HAL_GPIO_TogglePin(hour5_GPIO_Port, hour5_Pin);
-	  }
-	  if (count == 7){
-		  HAL_GPIO_TogglePin(hour7_GPIO_Port, hour7_Pin);
-		  HAL_GPIO_TogglePin(hour6_GPIO_Port, hour6_Pin);
-	  }
-	  if (count == 8){
-		  HAL_GPIO_TogglePin(hour7_GPIO_Port, hour7_Pin);
-		  HAL_GPIO_TogglePin(hour8_GPIO_Port, hour8_Pin);
-	  }
-	  if (count == 9){
-		  HAL_GPIO_TogglePin(hour9_GPIO_Port, hour9_Pin);
-		  HAL_GPIO_TogglePin(hour8_GPIO_Port, hour8_Pin);
-	  }
-	  if (count == 10){
-		  HAL_GPIO_TogglePin(hour10_GPIO_Port, hour10_Pin);
-		  HAL_GPIO_TogglePin(hour9_GPIO_Port, hour9_Pin);
-	  }
-	  if (count == 11){
-		  HAL_GPIO_TogglePin(hour10_GPIO_Port, hour10_Pin);
-		  HAL_GPIO_TogglePin(hour11_GPIO_Port, hour11_Pin);
-	  }
-	  if (count == 12){
-		  HAL_GPIO_TogglePin(hour0_GPIO_Port, hour0_Pin);
-		  HAL_GPIO_TogglePin(hour11_GPIO_Port, hour11_Pin);
-		  count = 0;
+	  else {
+		  count = -1;
+		  clearALLClock();
 	  }
 	  count++;
 	 HAL_Delay(1000);
