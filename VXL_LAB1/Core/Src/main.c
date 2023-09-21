@@ -61,9 +61,9 @@ static void MX_GPIO_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
-void clearAllClock(){
+void clearALLClock(){
     //TODO
-    for(int i = 4 ; i <= 15; i++)
+    for(int i = 1 ; i <= 12; i++)
 {
     HAL_GPIO_WritePin(GPIOA, 1 << i, RESET);
 }
