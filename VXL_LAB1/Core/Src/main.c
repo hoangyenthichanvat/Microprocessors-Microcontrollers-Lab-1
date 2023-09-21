@@ -68,6 +68,10 @@ void clearALLClock(){
     HAL_GPIO_WritePin(GPIOA, 1 << i, RESET);
 }
 }
+void clearNumberOnClock(int num)
+{
+	HAL_GPIO_WritePin(GPIOA, 1 << (num + 1), RESET);
+}
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -139,7 +143,7 @@ int main(void)
 	  }
 	  else {
 		  count = -1;
-		  clearALLClock();
+		  clearNumberOnClock(2);
 	  }
 	  count++;
 	 HAL_Delay(1000);
