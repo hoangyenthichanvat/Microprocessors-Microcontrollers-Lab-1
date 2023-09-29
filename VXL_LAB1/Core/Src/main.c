@@ -133,7 +133,7 @@ int main(void)
   HAL_GPIO_TogglePin(hour10_GPIO_Port, hour10_Pin);
   HAL_GPIO_TogglePin(hour11_GPIO_Port, hour11_Pin);
 
-  int hour = 0, min =4, sec = 38;
+  int hour = 3, min =4, sec = 38;
 while (1)
 {
 	 if(sec ==0)
@@ -163,7 +163,7 @@ while (1)
 		 hour++;
 	 }
 	 hour = hour%12;
-	 HAL_Delay(200);
+	 HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
